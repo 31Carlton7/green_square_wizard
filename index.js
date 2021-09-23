@@ -10,5 +10,5 @@ const data = {
 };
 
 jsonfile.writeFile(FILE_PATH, data, () => {
-  simple_git().add([FILE_PATH]).commit(CURRENT_TIMESTAMP);
+  simple_git().add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
 });
