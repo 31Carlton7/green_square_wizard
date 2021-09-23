@@ -1,0 +1,16 @@
+{
+  "name": "green_square_wizard",
+  "version": "1.0.0",
+  "description": "Keep forgetting to commit to get green squares? Let the wizard help.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carlton Aikins",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jsonfile": "^6.1.0",
+    "moment": "^2.29.1",
+    "simple-git": "^2.45.1"
+  }
+}
