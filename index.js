@@ -46,14 +46,14 @@ app.get('/', async (req, res) => {
   });
 });
 
-node_cron.schedule('* * * * *', function () {
-  jsonfile.writeFile(FILE_PATH, DATA, async function () {
+node_cron.schedule('* * * * *', async function () {
+  console.log('Striking');
+  await jsonfile.writeFile(FILE_PATH, DATA, async function () {
     await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
   });
   console.log('THE WIZARD STRIKES AGAIN!!!');
 });
 
 app.listen(PORT, () => {
-  // tslint:disable-next-line:no-console
   console.log(`App listening at http://${HOST}:${PORT}`);
 });
