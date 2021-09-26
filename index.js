@@ -46,8 +46,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-node_cron.schedule('* * * * *', async function () {
-  console.log('Striking');
+node_cron.schedule('2 */7 * * *', async function () {
   await jsonfile.writeFile(FILE_PATH, DATA, async function () {
     await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
   });
