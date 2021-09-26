@@ -1,0 +1,6 @@
+services:
+  green_square_wizard:
+    image: 31carlton7/green_square_wizard
+    container_name: wizard
+    ports:
+      - '3000:3000'
