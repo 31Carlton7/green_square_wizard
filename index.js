@@ -16,17 +16,44 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-const jsonfile = require('jsonfile');
 const moment = require('moment');
+const express = require('express');
+const node_cron = require('node-cron');
+const jsonfile = require('jsonfile');
 const simple_git = require('simple-git');
 
 const FILE_PATH = './data.json';
 const CURRENT_TIMESTAMP = moment().format();
 
-const data = {
-  date: CURRENT_TIMESTAMP,
+const PORT = process.env.PORT || 3000;
+const HOST = 'localhost';
+
+const DATA = {
+  Striking_Time: CURRENT_TIMESTAMP,
 };
 
-jsonfile.writeFile(FILE_PATH, data, () => {
-  simple_git().add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
+const app = express();
+const git = simple_git();
+
+app.use(express.static('public'));
+
+app.get('/', async (req, res) => {
+  readFile('./public/index.html', 'utf8', async (err, html) => {
+    if (err) {
+      res.status(500).send("Sorry, I don't feel like striking right now.");
+    }
+    res.send(html);
+  });
+});
+
+node_cron.schedule('* * * * *', function () {
+  jsonfile.writeFile(FILE_PATH, DATA, async function () {
+    await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
+  });
+  console.log('THE WIZARD STRIKES AGAIN!!!');
+});
+
+app.listen(PORT, () => {
+  // tslint:disable-next-line:no-console
+  console.log(`App listening at http://${HOST}:${PORT}`);
 });
