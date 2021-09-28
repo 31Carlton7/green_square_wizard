@@ -8,7 +8,7 @@ My 11th grade year in high school has now started for me, and with having to kee
 
 ## Developer Info
 
-The program itself is ran by a docker container that runs the process. Whilst the process is running, you can go to [localhost:3000](localhost:3000) and see a simple but cool interface that welcomes you to the Green Square Ninja.
+The program itself is ran by a docker container that runs the process. Whilst the process is running, you can go to [localhost:49160](localhost:49160) and see a simple but cool web interface that welcomes you to the Green Square Wizard.
 
 #### Tech Stack
 
@@ -18,7 +18,7 @@ The program itself is ran by a docker container that runs the process. Whilst th
 #### Dependencies
 
 - [simple-git](https://www.npmjs.com/package/simple-git)
-- [node-cron](https://www.npmjs.com/package/node-cron)
+- [cron](https://www.npmjs.com/package/cron)
 - [moment](https://www.npmjs.com/package/moment)
 - [jsonfile](https://www.npmjs.com/package/jsonfile)
 
