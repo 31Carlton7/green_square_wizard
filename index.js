@@ -16,27 +16,34 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// Define Package variables
 const moment = require('moment');
 const express = require('express');
 const jsonfile = require('jsonfile');
 const simple_git = require('simple-git');
-const cron = require('cron').CronJob;
+const node_cron = require('cron').CronJob;
 
+// Define file manipulation variables
 const FILE_PATH = './data.json';
 const CURRENT_TIMESTAMP = moment().format();
 
-const PORT = process.env.PORT || 3000;
+// Define Web App Variables
+const PORT = process.env.PORT || 49160;
 const HOST = 'localhost';
 
+// Create data.json code
 const DATA = {
   Striking_Time: CURRENT_TIMESTAMP,
 };
 
+// Define setup variables
 const app = express();
 const git = simple_git();
 
+// Use public directory
 app.use(express.static('public'));
 
+// Setup Web App
 app.get('/', async (req, res) => {
   readFile('./public/index.html', 'utf8', async (err, html) => {
     if (err) {
@@ -46,15 +53,23 @@ app.get('/', async (req, res) => {
   });
 });
 
-var job = new cron('0 0 */12 * * *', function () {
+// Setup cron job to commit file every 12 hours
+var job = new node_cron('0 0 */12 * * *', async function () {
+  await git.pull();
+
   jsonfile.writeFile(FILE_PATH, DATA, async function () {
-    await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
+    await git
+      .add([FILE_PATH])
+      .commit(CURRENT_TIMESTAMP)
+      .push('origin', 'master', { '--force': true });
   });
+
   console.log('THE WIZARD STRIKES AGAIN!!!');
 });
 
 job.start();
 
+// Start web app
 app.listen(PORT, () => {
   console.log(`App listening at http://${HOST}:${PORT}`);
 });
