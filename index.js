@@ -46,7 +46,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-var job = new cron('0 0 */4 * * *', function () {
+var job = new cron('0 0 */12 * * *', function () {
   jsonfile.writeFile(FILE_PATH, DATA, async function () {
     await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
   });
