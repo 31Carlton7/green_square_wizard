@@ -10,10 +10,10 @@
   "author": "Carlton Aikins",
   "license": "GPL-3.0",
   "dependencies": {
+    "cron": "^1.8.2",
     "express": "^4.17.1",
     "jsonfile": "^6.1.0",
     "moment": "^2.29.1",
-    "node-cron": "^3.0.0",
     "simple-git": "^2.45.1"
   }
 }
