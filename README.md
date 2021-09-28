@@ -4,7 +4,7 @@ The solution to your GitHub profile crisis. Do you keep forgetting to make a com
 
 ## About
 
-My 11th grade year in high school has now started for me, and with having to keep up with classes, I found it difficult at times to remember to commit something random to get a green square on my profile. So, like any good developer would do, I programmed a simple github bot to take care of my issue. The wizard will "Strike" or make a commit to this repository every 12 hours at 3 am and 3pm. This is to prevent a full 24 hours from going by and potentially missing the time. For instance if you had bad internet at one point in time and the commit is made a few seconds later than 24 hours.
+My 11th grade year in high school has now started for me, and with having to keep up with classes, I found it difficult at times to remember to commit something random to get a green square on my profile. So, like any good developer would do, I programmed a simple github bot to take care of my issue. The wizard will "Strike" or make a commit to this repository every 12 hours. This is to prevent a full 24 hours from going by and potentially missing the time. For instance if you had bad internet at one point in time and the commit is made a few seconds later than 24 hours.
 
 ## Developer Info
 
