@@ -21,6 +21,7 @@ const express = require('express');
 const node_cron = require('node-cron');
 const jsonfile = require('jsonfile');
 const simple_git = require('simple-git');
+const cron = require('cron').CronJob;
 
 const FILE_PATH = './data.json';
 const CURRENT_TIMESTAMP = moment().format();
@@ -46,12 +47,21 @@ app.get('/', async (req, res) => {
   });
 });
 
-node_cron.schedule('2 */7 * * *', async function () {
-  await jsonfile.writeFile(FILE_PATH, DATA, async function () {
+// node_cron.schedule('0 30 22 * * *', async function () {
+// await jsonfile.writeFile(FILE_PATH, DATA, async function () {
+//   await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
+// });
+// console.log('THE WIZARD STRIKES AGAIN!!!');
+// });
+
+var job = new cron('0 0 */4 * * *', function () {
+  jsonfile.writeFile(FILE_PATH, DATA, async function () {
     await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
   });
   console.log('THE WIZARD STRIKES AGAIN!!!');
 });
+
+job.start();
 
 app.listen(PORT, () => {
   console.log(`App listening at http://${HOST}:${PORT}`);
