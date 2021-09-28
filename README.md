@@ -28,7 +28,11 @@ To use the wizard, simply clone or fork this repository
 
     git clone https://github.com/31Carlton7/green_square_wizard
 
-then run this command
+then access the folder
+
+    cd green_square_wizard
+
+lastly run this command
 
     docker compose up
 
