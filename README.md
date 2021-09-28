@@ -18,7 +18,7 @@ The program itself is ran by a docker container that runs the process. Whilst th
 #### Dependencies
 
 - [simple-git](https://www.npmjs.com/package/simple-git)
-- [node-cron](https://www.npmjs.com/package/node-cron)
+- [cron](https://www.npmjs.com/package/cron)
 - [moment](https://www.npmjs.com/package/moment)
 - [jsonfile](https://www.npmjs.com/package/jsonfile)
 
