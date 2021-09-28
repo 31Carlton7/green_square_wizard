@@ -18,7 +18,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 const moment = require('moment');
 const express = require('express');
-const node_cron = require('node-cron');
 const jsonfile = require('jsonfile');
 const simple_git = require('simple-git');
 const cron = require('cron').CronJob;
