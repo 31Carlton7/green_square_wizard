@@ -46,13 +46,6 @@ app.get('/', async (req, res) => {
   });
 });
 
-// node_cron.schedule('0 30 22 * * *', async function () {
-// await jsonfile.writeFile(FILE_PATH, DATA, async function () {
-//   await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
-// });
-// console.log('THE WIZARD STRIKES AGAIN!!!');
-// });
-
 var job = new cron('0 0 */4 * * *', function () {
   jsonfile.writeFile(FILE_PATH, DATA, async function () {
     await git.add([FILE_PATH]).commit(CURRENT_TIMESTAMP).push();
