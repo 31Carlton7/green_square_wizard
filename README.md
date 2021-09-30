@@ -1,6 +1,6 @@
 <img width="1440" alt="Screen Shot 2021-09-28 at 11 59 28 AM" src="https://user-images.githubusercontent.com/76491344/135123478-05e17a16-767d-4838-88b8-940d68c1b313.png">
 
-# The Green Square Wizar
+# The Green Square Wizard
 
 The solution to your GitHub profile crisis. Do you keep forgetting to make a commit daily to fill up the green squares on your profile? Let the wizard do the job. Be sure to leave a 🌟.
 
