@@ -53,8 +53,7 @@ app.get('/', async (req, res) => {
   });
 });
 
-// Setup cron job to commit file every 12 hours
-var job = new node_cron('0 0 */12 * * *', async function () {
+var strike = async () => {
   await git.pull();
 
   jsonfile.writeFile(FILE_PATH, DATA, async function () {
@@ -65,8 +64,14 @@ var job = new node_cron('0 0 */12 * * *', async function () {
   });
 
   console.log('THE WIZARD STRIKES AGAIN!!!');
+};
+
+// Setup cron job to commit file every 6 hours
+var job = new node_cron('0 0 */6 * * *', async function () {
+  await strike();
 });
 
+strike();
 job.start();
 
 // Start web app
