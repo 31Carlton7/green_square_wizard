@@ -16,7 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-// Define Package variable
+// Define Package variables
 const moment = require('moment');
 const express = require('express');
 const jsonfile = require('jsonfile');
@@ -66,8 +66,8 @@ var strike = async () => {
   console.log('THE WIZARD STRIKES AGAIN!!!');
 };
 
-// Setup cron job to commit file every 6 hours
-var job = new node_cron('0 0 */6 * * *', async function () {
+// Setup cron job to commit file every 12 hours
+var job = new node_cron('0 0 */12 * * *', async function () {
   await strike();
 });
 
